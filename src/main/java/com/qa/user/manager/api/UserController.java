@@ -21,7 +21,7 @@ public class UserController {
 	
 	@GetMapping(value="/users")
 	public User[] getAllUsers() {
-		return ;
+		return allUsers;
 	}
 	
 }
