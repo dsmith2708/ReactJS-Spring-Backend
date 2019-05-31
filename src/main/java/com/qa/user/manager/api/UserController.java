@@ -1,6 +1,7 @@
 package com.qa.user.manager.api;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -8,6 +9,7 @@ public class UserController {
 	
 	private User[] allUsers = 
 		{
+			new User(0, "Hannah", 24),
 			new User(1, "John", 33),
 			new User(2, "James", 45),
 			new User(3, "Jane", 24),
@@ -22,6 +24,11 @@ public class UserController {
 	@GetMapping(value="/users")
 	public User[] getAllUsers() {
 		return allUsers;
+	}
+	
+	@GetMapping(value="/users/{id}")
+	public User getUser(@PathVariable(value="id") int id) {
+		return allUsers[id];
 	}
 	
 }
