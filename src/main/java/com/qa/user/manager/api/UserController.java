@@ -1,7 +1,9 @@
 package com.qa.user.manager.api;
 
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -21,14 +23,19 @@ public class UserController {
 			new User(9, "Dean", 46)
 		};
 	
-	@GetMapping(value="/users")
+	@GetMapping(value="/users", produces=MediaType.APPLICATION_JSON_VALUE)
 	public User[] getAllUsers() {
 		return allUsers;
 	}
 	
-	@GetMapping(value="/users/{id}")
+	@GetMapping(value="/users/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public User getUser(@PathVariable(value="id") int id) {
 		return allUsers[id];
+	}
+	
+	@PostMapping(value="/users", produces=MediaType.APPLICATION_JSON_VALUE)
+	public String addUser() {
+		return "User added Successfully";
 	}
 	
 }
